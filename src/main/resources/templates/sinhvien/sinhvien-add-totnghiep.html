@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Sinh Viên</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <h1 class="mt-4">Thêm bằng tốt nghiệp cho sinh viên</h1>
+    <div class="row">
+        <form role="form" th:action="@{/sinhvien/{sinhvienId}/totnghiep-add(sinhvienId=${sinhvien.maSV})}" method="POST"
+              th:object="${totnghiep}">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="my-2" for="truong">Trường</label>
+                    <select class="form-control"
+                            name="truong"
+                            th:field="*{truong}"
+                            id="truong">
+                        <option th:each="truong : ${truongList}" th:value="${truong.maTruong}"
+                                th:text="${truong.tenTruong}"></option>
+
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="my-2" for="nganh">Ngành</label>
+                    <select class="form-control"
+                            name="nganh"
+                            th:field="*{nganh}"
+                            id="nganh">
+                        <option th:each="nganh : ${nganhList}" th:value="${nganh.maNganh}"
+                                th:text="${nganh.tenNganh}"></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="my-2" for="heTN">Hệ tốt nghiệp</label>
+                    <input
+                            aria-describedby="heTNerror"
+                            type="text"
+                            class="form-control"
+                            id="heTN"
+                            name="heTN"
+                            th:field="*{heTN}"
+                            placeholder="Kỹ Sư">
+                    <small id="heTNerror" class=" text-danger" th:if="${#fields.hasErrors('heTN')}"
+                           th:errors="*{heTN}">
+                    </small>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="my-2" for="ngayTN">Ngày tốt nghiệp</label>
+                    <input
+                            aria-describedby="ngayTNerror"
+                            type="date"
+                            class="form-control"
+                            id="ngayTN"
+                            name="ngayTN"
+                            th:field="*{ngayTN}"
+                            placeholder="Việt Hàn">
+                    <small id="ngayTNerror" class=" text-danger" th:if="${#fields.hasErrors('ngayTN')}"
+                           th:errors="*{ngayTN}">
+                    </small>
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="my-2" for="loaiTN">Loại tốt nghiệp</label>
+                    <input
+                            aria-describedby="loaiTNerror"
+                            type="text"
+                            class="form-control"
+                            id="loaiTN"
+                            name="loaiTN"
+                            th:field="*{loaiTN}"
+                            placeholder="Xuất Sắc">
+                    <small id="loaiTNerror" class=" text-danger" th:if="${#fields.hasErrors('loaiTN')}"
+                           th:errors="*{loaiTN}">
+                    </small>
+                </div>
+            </div>
+            <button type="submit" class="mt-2 btn btn-primary w-50">Thêm</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+</script>
+</body>

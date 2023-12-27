@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Tốt Nghiệp</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <h1 class="mt-4">Quản lí Tốt Nghiệp</h1>
+    <div class="card mb-4">
+        <div class="card-header">
+            <a th:href="@{/totnghiep/totnghiep-add}" class="btn btn-primary "><i class="fa-solid fa-plus"></i> Thêm Tốt
+                Nghiệp Mới</a>
+        </div>
+        <div class="card-body">
+            <table id="datatablesCongViec" class="">
+                <thead>
+                <tr>
+                    <th>Tên Sinh Viên</th>
+                    <th>Tên Trường</th>
+                    <th>Tên Ngành</th>
+                    <th>Hệ Tốt Nghiệp</th>
+                    <th data-type="date" data-format="dd/MM/YYYY">Ngày Tốt Nghiệp</th>
+                    <th>Loại Tốt Nghiệp</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Tên Sinh Viên</th>
+                    <th>Tên Trường</th>
+                    <th>Tên Ngành</th>
+                    <th>Hệ Tốt Nghiệp</th>
+                    <th data-type="date" data-format="dd/MM/YYYY">Ngày Tốt Nghiệp</th>
+                    <th>Loại Tốt Nghiệp</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr th:each="totnghiep : ${totnghiepList}">
+                    <td th:text="${totnghiep.sinhVien.hoVaTen}"></td>
+                    <td th:text="${totnghiep.truong.tenTruong}"></td>
+                    <td th:text="${totnghiep.nganh.tenNganh}"></td>
+                    <td th:text="${totnghiep.heTN}"></td>
+                    <td th:text="${totnghiep.ngayTN}"></td>
+                    <td th:text="${totnghiep.loaiTN}"></td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+</script>
+</body>

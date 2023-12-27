@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Trường</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <h1 class="mt-4">Thêm Trường</h1>
+    <div class="row">
+       <form role="form" th:action="@{/truong/truong-add}" method="POST" th:object="${truong}" >
+           <div class="form-row">
+               <div class="form-group col-md-6">
+                   <label class="my-2" for="maTruong">Mã Trường</label>
+                   <input
+                           type="text"
+                           class="form-control"
+                           id="maTruong"
+                           name="maTruong"
+                           th:field="*{maTruong}"
+                           placeholder="VKU">
+               </div>
+               <div class="form-group col-md-6">
+                   <label class="my-2" for="tenTruong">Tên Trường</label>
+                   <input
+                           type="text"
+                           class="form-control"
+                           id="tenTruong"
+                           name="tenTruong"
+                           th:field="*{tenTruong}"
+                           placeholder="Việt Hàn">
+               </div>
+               <div class="form-group col-md-6">
+                   <label class="my-2" for="diaChi">Địa Chỉ</label>
+                   <input
+                           type="text"
+                           class="form-control"
+                           id="diaChi"
+                           name="diaChi"
+                           th:field="*{diaChi}"
+                           placeholder="470 Trần Đại Nghĩa">
+               </div>
+               <div class="form-group col-md-6">
+                   <label class="my-2" for="soDT">Số Điện Thoại</label>
+                   <input
+                           type="text"
+                           class="form-control"
+                           id="soDT"
+                           name="soDT"
+                           th:field="*{soDT}"
+                           placeholder="0387672103">
+               </div>
+<!--               <div class="form-group col-md-6">-->
+<!--                   <label class="my-2" for="inlineFormCustomSelectPref">Preference</label>-->
+<!--                   <select class="form-control" id="inlineFormCustomSelectPref">-->
+<!--                       <option selected>Chọn trường...</option>-->
+<!--                       <option value="1">One</option>-->
+<!--                       <option value="2">Two</option>-->
+<!--                       <option value="3">Three</option>-->
+<!--                   </select>-->
+<!--               </div>-->
+           </div>
+           <button type="submit" class="mt-2 btn btn-primary w-50">Thêm</button>
+       </form>
+    </div>
+</div>
+
+
+<script>
+</script>
+</body>

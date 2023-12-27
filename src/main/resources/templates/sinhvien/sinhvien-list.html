@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Sinh Viên</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <h1 class="mt-4">Quản lí Sinh Viên</h1>
+    <div class="card mb-4">
+        <div class="card-header">
+            <a th:href="@{/sinhvien/sinhvien-add}" class="btn btn-primary "><i class="fa-solid fa-plus"></i> Thêm Sinh Viên Mới</a>
+        </div>
+        <div class="card-body">
+            <table id="datatablesCongViec" class="">
+                <thead>
+                <tr>
+                    <th>Mã Sinh Viên</th>
+                    <th>Họ và tên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Mã Sinh Viên</th>
+                    <th>Họ và tên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr th:each="sinhvien : ${sinhvienList}">
+                    <td >
+                        <a th:href="@{/sinhvien/{sinhvienId}(sinhvienId=${sinhvien.maSV})}" th:text="${sinhvien.maSV}"></a>
+                    </td>
+                    <td th:text="${sinhvien.hoVaTen}"></td>
+                    <td th:text="${sinhvien.email}"></td>
+                    <td th:text="${sinhvien.soDT}"></td>
+                    <td th:text="${sinhvien.diaChi}"></td>
+
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+</script>
+</body>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Ngành</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <h1 class="mt-4">Quản lí Ngành</h1>
+    <div class="card mb-4">
+        <div class="card-header">
+            <a th:href="@{/nganh/nganh-add}" class="btn btn-primary "><i class="fa-solid fa-plus"></i> Thêm Ngành Mới</a>
+        </div>
+        <div class="card-body">
+            <table id="datatablesCongViec" class="">
+                <thead>
+                <tr>
+                    <th>Mã Ngành</th>
+                    <th>Tên Ngành</th>
+                    <th>Loại Ngành</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Mã Ngành</th>
+                    <th>Tên Ngành</th>
+                    <th>Loại Ngành</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr th:each="nganh : ${nganhList}">
+                    <td th:text="${nganh.maNganh}"></td>
+                    <td th:text="${nganh.tenNganh}"></td>
+                    <td th:text="${nganh.loaiNganh}"></td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+</script>
+</body>

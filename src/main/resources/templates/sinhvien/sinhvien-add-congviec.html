@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Sinh Viên</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <h1 class="mt-4">Thêm công việc cho sinh viên</h1>
+    <div class="row">
+        <form role="form" th:action="@{/sinhvien/{sinhvienId}/congviec-add(sinhvienId=${sinhvien.maSV})}" method="POST"
+              th:object="${congviec}">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="my-2" for="ngayVaoCT">Ngày vào công ty</label>
+                    <input
+                            aria-describedby="ngayVaoCTerror"
+                            type="date"
+                            class="form-control"
+                            id="ngayVaoCT"
+                            name="ngayVaoCT"
+                            th:field="*{ngayVaoCT}">
+                    <small id="ngayVaoCTerror" class=" text-danger" th:if="${#fields.hasErrors('ngayVaoCT')}"
+                           th:errors="*{ngayVaoCT}">
+                    </small>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="my-2" for="nganh">Ngành</label>
+                    <select class="form-control"
+                            name="nganh"
+                            th:field="*{nganh}"
+                            id="nganh">
+                        <option th:each="nganh : ${nganhList}" th:value="${nganh.maNganh}"
+                                th:text="${nganh.tenNganh}"></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="my-2" for="tenCV">Tên công việc</label>
+                    <input
+                            aria-describedby="tenCVerror"
+                            type="text"
+                            class="form-control"
+                            id="tenCV"
+                            name="tenCV"
+                            th:field="*{tenCV}"
+                            placeholder="Fresher Developer">
+                    <small id="tenCVerror" class=" text-danger" th:if="${#fields.hasErrors('tenCV')}"
+                           th:errors="*{tenCV}">
+                    </small>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="my-2" for="tenCT">Tên công ty</label>
+                    <input
+                            aria-describedby="tenCTerror"
+                            type="text"
+                            class="form-control"
+                            id="tenCT"
+                            name="tenCT"
+                            th:field="*{tenCT}"
+                            placeholder="mgm technology partners Vietnam">
+                    <small id="tenCTerror" class=" text-danger" th:if="${#fields.hasErrors('tenCT')}"
+                           th:errors="*{tenCT}">
+                    </small>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="my-2" for="diaChiCT">Địa chỉ công ty</label>
+                    <input
+                            aria-describedby="diaChiCTerror"
+                            type="text"
+                            class="form-control"
+                            id="diaChiCT"
+                            name="diaChiCT"
+                            th:field="*{diaChiCT}"
+                            placeholder="71 Quang Trung, Hải Châu 1, Đà Nẵng">
+                    <small id="diaChiCTerror" class=" text-danger" th:if="${#fields.hasErrors('diaChiCT')}"
+                           th:errors="*{diaChiCT}">
+                    </small>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="my-2" for="thoiGianLamViec">Thời gian làm việc (năm)</label>
+                    <input
+                            aria-describedby="thoiGianLamViecerror"
+                            type="number"
+                            step="1"
+                            min="1"
+                            value="1"
+                            class="form-control"
+                            id="thoiGianLamViec"
+                            name="thoiGianLamViec"
+                            th:field="*{thoiGianLamViec}"
+                           >
+                    <small id="thoiGianLamViecerror" class=" text-danger" th:if="${#fields.hasErrors('thoiGianLamViec')}"
+                           th:errors="*{thoiGianLamViec}">
+                    </small>
+
+                </div>
+
+            </div>
+            <button type="submit" class="mt-2 btn btn-primary w-50">Thêm</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+</script>
+</body>

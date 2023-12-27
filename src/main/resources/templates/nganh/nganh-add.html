@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+  <title>Ngành</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+  <h1 class="mt-4">Thêm Ngành</h1>
+  <div class="row">
+    <form role="form" th:action="@{/nganh/nganh-add}" method="POST" th:object="${nganh}" >
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label class="my-2" for="maNganh">Mã Ngành</label>
+          <input
+                  type="text"
+                  class="form-control"
+                  id="maNganh"
+                  name="maNganh"
+                  th:field="*{maNganh}"
+                  placeholder="IT">
+        </div>
+        <div class="form-group col-md-6">
+          <label class="my-2" for="tenNganh">Tên Ngành</label>
+          <input
+                  type="text"
+                  class="form-control"
+                  id="tenNganh"
+                  name="tenNganh"
+                  th:field="*{tenNganh}"
+                  placeholder="Công nghệ thông tin">
+        </div>
+        <div class="form-group col-md-6">
+          <label class="my-2" for="loaiNganh">Loại Ngành</label>
+          <input
+                  type="text"
+                  class="form-control"
+                  id="loaiNganh"
+                  name="loaiNganh"
+                  th:field="*{loaiNganh}"
+                  placeholder="Kỹ Thuật">
+        </div>
+
+      </div>
+      <button type="submit" class="mt-2 btn btn-primary w-50">Thêm</button>
+    </form>
+  </div>
+</div>
+
+
+<script>
+</script>
+</body>
