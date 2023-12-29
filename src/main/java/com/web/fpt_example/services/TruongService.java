@@ -12,4 +12,8 @@ public interface TruongService {
     List<Truong> getAllTruong();
 
     Truong findTruongById(String maTruong);
+
+    void updateTruong(Truong truong);
+
+    void delTruongById(String maTruong);
 }

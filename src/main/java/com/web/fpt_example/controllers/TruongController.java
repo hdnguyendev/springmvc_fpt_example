@@ -5,10 +5,7 @@ import com.web.fpt_example.services.TruongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,4 +35,25 @@ public class TruongController {
         truongService.addTruong(truong);
         return "redirect:/truong";
     }
+
+    @GetMapping("/{maTruong}/update")
+    public String updateTruongForm(@PathVariable("maTruong") String maTruong, Model model) {
+        Truong truong = truongService.findTruongById(maTruong);
+        model.addAttribute("truong", truong);
+        return "truong/truong-update";
+    }
+    @PostMapping("/{maTruong}/update")
+    public String updateTruong(@PathVariable("maTruong") String maTruong,
+                               @ModelAttribute("truong") Truong truong,
+                               Model model) {
+        truongService.updateTruong(truong);
+        return "redirect:/truong";
+    }
+
+    @GetMapping("/{maTruong}/delete")
+    public String delTruong(@PathVariable("maTruong") String maTruong) {
+        truongService.delTruongById(maTruong);
+        return "redirect:/truong";
+    }
+
 }

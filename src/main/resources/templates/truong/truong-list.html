@@ -36,7 +36,9 @@
 
 
                 <tr th:each="truong : ${truongList}">
-                    <td th:text="${truong.maTruong}"></td>
+                    <td>
+                        <a th:href="@{/truong/{maTruong}/update(maTruong=${truong.maTruong})}" th:text="${truong.maTruong}"></a>
+                    </td>
                     <td th:text="${truong.tenTruong}"></td>
                     <td th:text="${truong.diaChi}"></td>
                     <td th:text="${truong.soDT}"></td>

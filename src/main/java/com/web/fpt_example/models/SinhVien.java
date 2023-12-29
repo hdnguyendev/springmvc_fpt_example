@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class SinhVien {
     private String email;
     private String soDT;
     private String diaChi;
-
+    private String avatar;
 
     @OneToMany(mappedBy = "sinhVien", cascade = CascadeType.ALL)
     private List<TotNghiep>  totNghiepList = new ArrayList<>();

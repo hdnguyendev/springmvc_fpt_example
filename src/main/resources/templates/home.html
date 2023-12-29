@@ -6,13 +6,70 @@
 >
 <head>
     <title>Dashboard</title>
+    <style>
+        .img-preview {
+            border: 1px dashed #adadad;
+            width: 100%;
+            height: 350px;
+            color: white;
+            font-size: 22px;
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .img-preview i {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .img-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
 
-    <section layout:fragment="mainContent">
-        <h1 class="mt-4">Welcome to FPT Management</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-    </section>
+<section layout:fragment="mainContent" class="container d-flex flex-column flex-wrap justify-content-center align-items-center">
+    <h1 class="mt-4">Welcome to FPT Management</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+    <div class="col-md-6">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+
+</section>
+
+<th:block layout:fragment="script" th:with="data = ${dataChart}">
+    <script th:inline="javascript">
+        var data = /*[[${data}]]*/ [];
+        var backgroundColor = ["rgb(255, 99, 132)", "rgb(75, 192, 192)", "rgb(255, 205, 86)", "rgb(201, 203, 207)", "rgb(54, 162, 235)"];
+        new Chart(document.getElementById("myChart"), {
+            "type": "polarArea",
+            "data": {
+                "labels": ["Sinh Viên", "Công Việc", "Tốt Nghiệp"],
+                "datasets": [{
+                    "data": data,
+                    "backgroundColor": backgroundColor
+                }]
+            }
+        });
+    </script>
+
+</th:block>
 </body>
+
+

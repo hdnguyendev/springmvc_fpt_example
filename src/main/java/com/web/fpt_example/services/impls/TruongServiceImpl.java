@@ -31,4 +31,14 @@ public class TruongServiceImpl implements TruongService {
     public Truong findTruongById(String maTruong) {
         return truongRepository.findById(maTruong).get();
     }
+
+    @Override
+    public void updateTruong(Truong truong) {
+        truongRepository.save(truong);
+    }
+
+    @Override
+    public void delTruongById(String maTruong) {
+        truongRepository.deleteById(maTruong);
+    }
 }

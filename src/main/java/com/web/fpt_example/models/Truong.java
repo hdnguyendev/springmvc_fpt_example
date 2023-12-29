@@ -17,7 +17,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Truong {
-
     @Id
     private String maTruong;
     private String tenTruong;

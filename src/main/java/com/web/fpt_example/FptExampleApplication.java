@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
 
+
+
 @SpringBootApplication
 public class FptExampleApplication {
 

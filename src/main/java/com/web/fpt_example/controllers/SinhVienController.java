@@ -8,7 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -24,7 +29,8 @@ public class SinhVienController {
     TotNghiepService totNghiepService;
     @Autowired
     CongViecService congViecService;
-
+    @Autowired
+    FilesStorageService filesStorageService;
     @GetMapping("")
     public String sinhvienList(Model model) {
         List<SinhVien> sinhvienList = sinhVienService.getAllSinhVien();
@@ -40,8 +46,24 @@ public class SinhVienController {
     }
 
     @PostMapping("/sinhvien-add")
-    public String addSinhVien(@ModelAttribute("sinhvien") SinhVien sinhvien) {
-        sinhVienService.addSinhVien(sinhvien);
+    public String addSinhVien(@ModelAttribute("sinhvien") SinhVien sinhvien,
+                              @RequestParam("file") MultipartFile file,
+                              Model model
+    ) {
+
+
+        try {
+            String avatar = "avatar-default.png";
+            if (!file.isEmpty()) {
+              avatar = filesStorageService.save(file);
+            }
+            sinhvien.setAvatar(avatar);
+            sinhVienService.addSinhVien(sinhvien);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "redirect:/sinhvien";
     }
 
